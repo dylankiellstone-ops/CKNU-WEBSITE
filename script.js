@@ -19,14 +19,24 @@ document.addEventListener("keydown", (event) => {
 // Keep the copyright year current.
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Our impact: live totals from the CKNU food tracker. Only totals are public;
-// the tracker's database keeps everything else private. If the numbers can't
-// be loaded, the section just stays hidden.
+// Our impact: history from CKNU's recovery spreadsheets, plus live totals from the
+// CKNU food tracker (which took over logging in fall 2026). Only totals are public;
+// the tracker's database keeps everything else private. If the live numbers can't be
+// loaded, the page just shows the history already written in index.html.
+const HISTORY = {
+  pounds: 10139, // fall 2023 to spring 2026
+  meals: 1946, // fall 2025 and winter 2026
+  biggestYear: 3942, // 2025-26, for scaling the bars
+};
 const IMPACT_URL = "https://otsgpdlhjulixxqejkzk.supabase.co/rest/v1/rpc/public_impact";
 // The tracker's publishable key. It's designed to be public.
 const IMPACT_KEY = "sb_publishable_kUaii2SF5CKZDlovSbuNng_-UVfHbQS";
 
-async function showImpact() {
+function formatCount(value) {
+  return Math.round(value).toLocaleString("en-US");
+}
+
+async function addLiveImpact() {
   try {
     const response = await fetch(IMPACT_URL, {
       method: "POST",
@@ -34,24 +44,34 @@ async function showImpact() {
       body: "{}",
     });
     if (!response.ok) return;
-    const totals = await response.json();
-    let shown = 0;
-    for (const stat of document.querySelectorAll("[data-stat]")) {
-      const value = Number(totals[stat.dataset.stat]) || 0;
-      stat.querySelector(".stat-number").textContent = value.toLocaleString("en-US");
-      stat.hidden = value <= 0;
-      if (value > 0) shown += 1;
+    const live = await response.json();
+    const pounds = Number(live.pounds_rescued) || 0;
+    const meals = Number(live.meals_made) || 0;
+    document.getElementById("impact-pounds").textContent = formatCount(HISTORY.pounds + pounds);
+    document.getElementById("impact-meals").textContent = formatCount(HISTORY.meals + meals);
+
+    // This school year's bar, from the tracker.
+    if (pounds > 0) {
+      const thisYear = document.getElementById("impact-this-year");
+      const biggest = Math.max(HISTORY.biggestYear, pounds);
+      thisYear.querySelector(".year-value").textContent = formatCount(pounds);
+      thisYear.querySelector(".year-bar span").style.setProperty("--share", `${(pounds / biggest) * 100}%`);
+      // If this year overtakes the record, rescale the earlier bars to match.
+      if (pounds > HISTORY.biggestYear) {
+        for (const bar of document.querySelectorAll("#impact-years li:not(#impact-this-year)")) {
+          const value = Number(bar.querySelector(".year-value").textContent.replace(/,/g, ""));
+          bar.querySelector(".year-bar span").style.setProperty("--share", `${(value / biggest) * 100}%`);
+        }
+      }
+      thisYear.hidden = false;
+      document.getElementById("impact-note").textContent =
+        "From our recovery logs since fall 2023, and live from our kitchen tracker this year. Meals counted since fall 2025, when we started tracking them.";
     }
-    if (totals.since) {
-      const since = new Date(totals.since + "T00:00:00").toLocaleDateString("en-US", { month: "long", year: "numeric" });
-      document.getElementById("impact-note").textContent = `Live from our kitchen log, since ${since}.`;
-    }
-    document.getElementById("impact").hidden = shown === 0;
   } catch {
-    // Offline or the tracker is down: leave the section hidden.
+    // Offline or the tracker is down: the history in index.html stays as it is.
   }
 }
-showImpact();
+addLiveImpact();
 
 // Photo gallery: tap a photo to see it bigger.
 const lightbox = document.getElementById("lightbox");

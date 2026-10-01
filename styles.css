@@ -246,7 +246,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--periwinkle); ou
 /* Our impact: live numbers from the food tracker */
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
   gap: 16px;
   margin-top: 24px;
 }
@@ -259,8 +259,13 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--periwinkle); ou
   border-top: 8px solid var(--accent, var(--purple));
   border-radius: var(--radius);
   padding: 20px 24px;
+  min-width: 0;
 }
-.stat[hidden] { display: none; }
+@media (max-width: 480px) {
+  .stat { padding: 16px; }
+  .stat-number { font-size: 2.1rem; }
+  .stat-label { font-size: 0.85rem; }
+}
 .stat-rose { --accent: var(--rose); }
 .stat-sage { --accent: var(--sage); }
 .stat-gold { --accent: var(--gold); }
@@ -280,6 +285,20 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--periwinkle); ou
   color: var(--teal);
 }
 .stats-note { margin-top: 16px; color: var(--muted); font-size: 0.9rem; }
+.years-title { margin-top: 36px; font-size: 1.15rem; }
+.years { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 10px; max-width: 640px; }
+.years li { display: grid; grid-template-columns: 4.5em 1fr 4.5em; align-items: center; gap: 12px; }
+.years li[hidden] { display: none; }
+.year-label, .year-value {
+  font-family: var(--heading-font);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--purple);
+}
+.year-value { text-align: right; }
+.year-bar { height: 18px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.year-bar span { display: block; height: 100%; width: var(--share); border-radius: 999px; background: var(--sage); }
+#impact-this-year .year-bar span { background: var(--gold); }
 
 /* Photo gallery */
 .gallery {

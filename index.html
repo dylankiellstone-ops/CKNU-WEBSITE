@@ -87,29 +87,39 @@
       </div>
     </section>
 
-    <!-- Live totals from the CKNU food tracker. Stays hidden until there's something to show. -->
-    <section id="impact" class="section" hidden>
+    <!-- Our impact. The numbers below are the history from CKNU's recovery spreadsheets
+         (fall 2023 to spring 2026). script.js adds the live totals from the food tracker on top. -->
+    <section id="impact" class="section">
       <div class="container">
         <h2>Our impact</h2>
+        <p>Every pound below is food from campus that would otherwise have been thrown away.</p>
         <div class="stats">
-          <div class="stat stat-rose" data-stat="meals_delivered" hidden>
-            <span class="stat-number">0</span>
-            <span class="stat-label">meals delivered</span>
-          </div>
-          <div class="stat stat-sage" data-stat="pounds_rescued" hidden>
-            <span class="stat-number">0</span>
+          <div class="stat stat-sage">
+            <span class="stat-number" id="impact-pounds">10,139</span>
             <span class="stat-label">pounds of food rescued</span>
           </div>
-          <div class="stat stat-gold" data-stat="fridges_stocked" hidden>
-            <span class="stat-number">0</span>
+          <div class="stat stat-rose">
+            <span class="stat-number" id="impact-meals">1,946</span>
+            <span class="stat-label">meals prepped</span>
+          </div>
+          <div class="stat stat-gold">
+            <span class="stat-number">10</span>
+            <span class="stat-label">campus dining partners</span>
+          </div>
+          <div class="stat stat-periwinkle">
+            <span class="stat-number">5</span>
             <span class="stat-label">community fridges stocked</span>
           </div>
-          <div class="stat stat-periwinkle" data-stat="shifts" hidden>
-            <span class="stat-number">0</span>
-            <span class="stat-label">prep shifts</span>
-          </div>
         </div>
-        <p class="stats-note" id="impact-note">Live from our kitchen log.</p>
+
+        <h3 class="years-title">Pounds rescued each year</h3>
+        <ul class="years" id="impact-years">
+          <li><span class="year-label">2023–24</span><span class="year-bar"><span style="--share: 86%"></span></span><span class="year-value">3,397</span></li>
+          <li><span class="year-label">2024–25</span><span class="year-bar"><span style="--share: 71%"></span></span><span class="year-value">2,799</span></li>
+          <li><span class="year-label">2025–26</span><span class="year-bar"><span style="--share: 100%"></span></span><span class="year-value">3,942</span></li>
+          <li id="impact-this-year" hidden><span class="year-label">2026–27</span><span class="year-bar"><span style="--share: 0%"></span></span><span class="year-value">0</span></li>
+        </ul>
+        <p class="stats-note" id="impact-note">From our recovery logs since fall 2023. Meals counted since fall 2025, when we started tracking them.</p>
       </div>
     </section>
 

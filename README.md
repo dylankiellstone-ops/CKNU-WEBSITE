@@ -44,7 +44,13 @@ assets/gallery/  photos for the Photos section
 
 - **Changing words:** edit `index.html` on GitHub (open the file, tap the ✏️ pencil, then **Commit changes**). The site updates in about a minute.
 - **Contact details** appear in three places in `index.html`: the Get involved links, the Say hi section, and the footer.
-- **Our impact numbers** come live from the CKNU food tracker's database (its `public_impact` function), which only shares totals: meals delivered, pounds of food rescued, community fridges stocked and prep shifts. Each number appears once it's above zero, and the whole section stays hidden if there's nothing yet or the tracker can't be reached. The tracker's address and public key are at the top of the impact code in `script.js`. To change the labels, edit the `#impact` section in `index.html`.
+- **Our impact numbers:** the history is written into the `#impact` section of `index.html` and the `HISTORY` numbers at the top of the impact code in `script.js`. They come from CKNU's recovery spreadsheets in the campuskitchen@ Google Drive (CKNU Recovery Tracker 2023-2024, 2024-2025 and 2025-2026), fall 2023 to spring 2026:
+  - **Pounds rescued:** every logged item's weight added up: 3,397 lbs (2023–24), 2,799 lbs (2024–25), 3,942 lbs (2025–26), 10,139 lbs in all.
+  - **Meals prepped:** the Meal Count tabs: 1,355 (fall 2025) and 591 (winter 2026), 1,946 in all. Meals weren't counted before fall 2025, and spring 2026 has no meal count.
+  - **Campus dining partners:** places food was recovered from: Athletics, Allen Center, Elder, Global Hub, Hillel, Norris Catering, Norris Retail, Sargent, Allison and Plex.
+  - **Community fridges:** the five Evanston Community Fridges.
+  - From fall 2026 on, logging happens in the CKNU food tracker, and the page adds its live totals (its `public_impact` function, which only shares totals) on top of the history and shows this year's bar. If the tracker can't be reached, the history still shows.
+  - **At the end of each school year,** add that year's tracker total to `HISTORY` and as a new bar in `index.html`, or leave it live; just don't do both, or it counts twice.
 - **Team login link:** if the food tracker moves (for example to GitHub Pages), search `index.html` for `bucolic-brigadeiros-cb611c.netlify.app` and replace both copies.
 - **Adding a photo to the Photos section:** upload it to `assets/gallery/` (on GitHub: open the folder, then **Add file → Upload files**). Then in `index.html`, find the `<div class="gallery">` block, copy one whole `<figure>…</figure>`, and change the `src` to `assets/gallery/your-photo.jpg`, the `alt` to what's in the photo, and the caption. Keep photos under about 500 KB so the site stays fast on phones. Tapping a photo opens it bigger; that works automatically for new ones.
 - **Current gallery photos** are linked from the CKNU Mailchimp image library. If those ever stop showing, upload copies to `assets/gallery/` and point the `src` there.
