@@ -25,7 +25,10 @@ document.getElementById("year").textContent = new Date().getFullYear();
 // loaded, the page just shows the history already written in index.html.
 const HISTORY = {
   pounds: 10139, // fall 2023 to spring 2026
-  meals: 1946, // fall 2025 and winter 2026
+  // 1,946 counted (fall 2025 and winter 2026), plus about 5,068 estimated for the quarters
+  // that weren't counted, at the counted quarters' rate: 1,946 meals from 2,813 lbs of
+  // food, about 0.69 meals per pound.
+  meals: 7014,
   biggestYear: 3942, // 2025-26, for scaling the bars
 };
 const IMPACT_URL = "https://otsgpdlhjulixxqejkzk.supabase.co/rest/v1/rpc/public_impact";
@@ -71,7 +74,7 @@ async function addLiveImpact() {
       }
       thisYear.hidden = false;
       document.getElementById("impact-note").textContent =
-        "From our recovery logs since fall 2023, and live from our kitchen tracker this year. Meals counted since fall 2025, when we started tracking them.";
+        "From our recovery logs since fall 2023, and live from our kitchen tracker this year. Meals before fall 2025, when we started counting them, are estimated from the pounds of food we rescued.";
     }
   } catch {
     // Offline or the tracker is down: the history in index.html stays as it is.
