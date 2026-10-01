@@ -1,6 +1,6 @@
 # The Campus Kitchen at Northwestern University: website
 
-The public website for CKNU. It's a single page with these sections: who we are, how it works, our impact, photos, get involved (volunteer, shift leads, exec board), support us, and contact. There's also a **Team login** button that links to the CKNU food tracker shift leads use.
+The public website for CKNU. It's a single page with these sections: who we are, how it works, our impact, shifts (photos of each kind of shift), get involved (volunteer, shift leads, exec board), support us, and contact. There's also a **Team login** button that links to the CKNU food tracker shift leads use.
 
 - **Live site:** https://cknu.org (also www.cknu.org), once GitHub Pages and the DNS are set up (see below)
 - **Hosting:** GitHub Pages. It's free, with no deploy limits, and updates about a minute after each change to `main`.
@@ -39,7 +39,7 @@ index.html     all the page text and sections
 styles.css     colours, fonts and layout
 script.js      the phone menu, the photo pop-up and the copyright year
 assets/        logos, favicon and phone home-screen icon
-assets/gallery/  photos for the Photos section
+assets/gallery/  photos for the Shifts section
 ```
 
 - **After changing `styles.css` or `script.js`:** bump the `?v=` number on their two lines in `index.html` (any new number, such as today's date and time). Otherwise phones can keep using the old file for a while and the page can look broken.
@@ -56,8 +56,8 @@ assets/gallery/  photos for the Photos section
   - **Exact numbers:** the cards show exact totals (10,490 lbs and 7,014 meals, plus whatever the tracker adds). The yearly bars are exact pounds too. The opening paragraph at the top of the page says "over 10,000 pounds of food and over 7,000 meals"; update it by hand as the totals grow.
   - **At the end of each school year,** add that year's tracker total to `HISTORY` and as a new bar in `index.html`, or leave it live; just don't do both, or it counts twice.
 - **Team login link:** if the food tracker moves (for example to GitHub Pages), search `index.html` for `bucolic-brigadeiros-cb611c.netlify.app` and replace both copies.
-- **Adding a photo to the Photos section:** upload it to `assets/gallery/` (on GitHub: open the folder, then **Add file → Upload files**). Then in `index.html`, find the `<div class="gallery">` block, copy one whole `<figure>…</figure>`, and change the `src` to `assets/gallery/your-photo.jpg`, the `alt` to what's in the photo, and the caption. Keep photos under about 500 KB so the site stays fast on phones. Tapping a photo opens it bigger; that works automatically for new ones.
-- **Current gallery photos are stock photos**, and the page says so. Don't describe them as CKNU's own. When real photos replace them, update the line under the "Photos" heading too. They're linked from the CKNU Mailchimp image library. If those ever stop showing, upload copies to `assets/gallery/` and point the `src` there.
+- **Adding a photo to the Shifts section:** upload it to `assets/gallery/` (on GitHub: open the folder, then **Add file → Upload files**). Then in `index.html`, find the `<div class="gallery">` block, copy one whole `<figure>…</figure>`, and change the `src` to `assets/gallery/your-photo.jpg`, the `alt` to what's in the photo, and the caption. Keep photos under about 500 KB so the site stays fast on phones. Tapping a photo opens it bigger; that works automatically for new ones.
+- **Current photos in the Shifts section** are stock photos (not labelled on the page). Don't describe them as CKNU's own in captions or text. They're linked from the CKNU Mailchimp image library. If those ever stop showing, upload copies to `assets/gallery/` and point the `src` there.
 
 ## Brand rules (from the CKNU Brand Guidelines)
 
