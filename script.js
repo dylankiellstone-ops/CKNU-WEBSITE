@@ -19,6 +19,40 @@ document.addEventListener("keydown", (event) => {
 // Keep the copyright year current.
 document.getElementById("year").textContent = new Date().getFullYear();
 
+// Our impact: live totals from the CKNU food tracker. Only totals are public;
+// the tracker's database keeps everything else private. If the numbers can't
+// be loaded, the section just stays hidden.
+const IMPACT_URL = "https://otsgpdlhjulixxqejkzk.supabase.co/rest/v1/rpc/public_impact";
+// The tracker's publishable key. It's designed to be public.
+const IMPACT_KEY = "sb_publishable_kUaii2SF5CKZDlovSbuNng_-UVfHbQS";
+
+async function showImpact() {
+  try {
+    const response = await fetch(IMPACT_URL, {
+      method: "POST",
+      headers: { apikey: IMPACT_KEY, "Content-Type": "application/json" },
+      body: "{}",
+    });
+    if (!response.ok) return;
+    const totals = await response.json();
+    let shown = 0;
+    for (const stat of document.querySelectorAll("[data-stat]")) {
+      const value = Number(totals[stat.dataset.stat]) || 0;
+      stat.querySelector(".stat-number").textContent = value.toLocaleString("en-US");
+      stat.hidden = value <= 0;
+      if (value > 0) shown += 1;
+    }
+    if (totals.since) {
+      const since = new Date(totals.since + "T00:00:00").toLocaleDateString("en-US", { month: "long", year: "numeric" });
+      document.getElementById("impact-note").textContent = `Live from our kitchen log, since ${since}.`;
+    }
+    document.getElementById("impact").hidden = shown === 0;
+  } catch {
+    // Offline or the tracker is down: leave the section hidden.
+  }
+}
+showImpact();
+
 // Photo gallery: tap a photo to see it bigger.
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");

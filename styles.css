@@ -243,6 +243,44 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--periwinkle); ou
 .footer-inner a { color: var(--purple); }
 .fine-print { font-size: 0.85rem; }
 
+/* Our impact: live numbers from the food tracker */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--white);
+  border: 2px solid var(--line);
+  border-top: 8px solid var(--accent, var(--purple));
+  border-radius: var(--radius);
+  padding: 20px 24px;
+}
+.stat[hidden] { display: none; }
+.stat-rose { --accent: var(--rose); }
+.stat-sage { --accent: var(--sage); }
+.stat-gold { --accent: var(--gold); }
+.stat-periwinkle { --accent: var(--periwinkle); }
+.stat-number {
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 6vw, 3.2rem);
+  line-height: 1;
+  color: var(--purple);
+}
+.stat-label {
+  font-family: var(--heading-font);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  color: var(--teal);
+}
+.stats-note { margin-top: 16px; color: var(--muted); font-size: 0.9rem; }
+
 /* Photo gallery */
 .gallery {
   display: grid;
