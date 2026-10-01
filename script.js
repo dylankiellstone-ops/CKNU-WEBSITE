@@ -39,11 +39,6 @@ function formatCount(value) {
   return Math.round(value).toLocaleString("en-US");
 }
 
-// Headline numbers are rounded to the nearest 500, with a "+": 10,139 shows as "10,000+".
-function formatHeadline(value) {
-  const rounded = Math.max(500, Math.round(value / 500) * 500);
-  return `${rounded.toLocaleString("en-US")}+`;
-}
 
 async function addLiveImpact() {
   try {
@@ -56,8 +51,8 @@ async function addLiveImpact() {
     const live = await response.json();
     const pounds = Number(live.pounds_rescued) || 0;
     const meals = Number(live.meals_made) || 0;
-    document.getElementById("impact-pounds").textContent = formatHeadline(HISTORY.pounds + pounds);
-    document.getElementById("impact-meals").textContent = formatHeadline(HISTORY.meals + meals);
+    document.getElementById("impact-pounds").textContent = formatCount(HISTORY.pounds + pounds);
+    document.getElementById("impact-meals").textContent = formatCount(HISTORY.meals + meals);
 
     // This school year's bar, from the tracker.
     if (pounds > 0) {
