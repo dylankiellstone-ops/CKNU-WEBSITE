@@ -1,6 +1,6 @@
 # The Campus Kitchen at Northwestern University: website
 
-The public website for CKNU. It's a single page with these sections: who we are, how it works, get involved (volunteer, shift leads, exec board), support us, and contact. There's also a **Team login** button that links to the CKNU food tracker shift leads use.
+The public website for CKNU. It's a single page with these sections: who we are, how it works, photos, get involved (volunteer, shift leads, exec board), support us, and contact. There's also a **Team login** button that links to the CKNU food tracker shift leads use.
 
 - **Live site:** https://cknu.org (also www.cknu.org), once GitHub Pages and the DNS are set up (see below)
 - **Hosting:** GitHub Pages. It's free, with no deploy limits, and updates about a minute after each change to `main`.
@@ -37,14 +37,16 @@ Everything is plain HTML and CSS, with no build step:
 ```
 index.html     all the page text and sections
 styles.css     colours, fonts and layout
-script.js      the phone menu and the copyright year
+script.js      the phone menu, the photo pop-up and the copyright year
 assets/        logos, favicon and phone home-screen icon
+assets/gallery/  photos for the Photos section
 ```
 
 - **Changing words:** edit `index.html` on GitHub (open the file, tap the ✏️ pencil, then **Commit changes**). The site updates in about a minute.
 - **Contact details** appear in three places in `index.html`: the Get involved links, the Say hi section, and the footer.
 - **Team login link:** if the food tracker moves (for example to GitHub Pages), search `index.html` for `bucolic-brigadeiros-cb611c.netlify.app` and replace both copies.
-- **Adding photos:** put them in `assets/` and add `<img src="assets/your-photo.jpg" alt="what's in the photo">` where you want them. Keep photos under about 500 KB so the site stays fast on phones.
+- **Adding a photo to the Photos section:** upload it to `assets/gallery/` (on GitHub: open the folder, then **Add file → Upload files**). Then in `index.html`, find the `<div class="gallery">` block, copy one whole `<figure>…</figure>`, and change the `src` to `assets/gallery/your-photo.jpg`, the `alt` to what's in the photo, and the caption. Keep photos under about 500 KB so the site stays fast on phones. Tapping a photo opens it bigger; that works automatically for new ones.
+- **Current gallery photos** are linked from the CKNU Mailchimp image library. If those ever stop showing, upload copies to `assets/gallery/` and point the `src` there.
 
 ## Brand rules (from the CKNU Brand Guidelines)
 

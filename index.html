@@ -28,6 +28,7 @@
       <nav id="site-nav" class="site-nav" aria-label="Main">
         <a href="#about">About</a>
         <a href="#how">How it works</a>
+        <a href="#photos">Photos</a>
         <a href="#get-involved">Get involved</a>
         <a href="#support">Support us</a>
         <a href="#contact">Contact</a>
@@ -85,6 +86,41 @@
         </ol>
       </div>
     </section>
+
+    <section id="photos" class="section">
+      <div class="container">
+        <h2>Photos</h2>
+        <p>A peek inside our prep kitchen at Hinman. Tap a photo to see it bigger.</p>
+        <!-- To add a photo: put it in assets/gallery/ and copy one <figure> below. -->
+        <div class="gallery">
+          <figure class="gallery-item">
+            <button type="button" class="gallery-open" aria-label="Enlarge photo: Resourcing shift">
+              <img src="https://mcusercontent.com/396ad65cb226626a0d13809ad/images/225af99e-94e2-8f49-d2be-6704be3ef6ce.jpg" alt="A CKNU resourcing shift" loading="lazy">
+            </button>
+            <figcaption>Resourcing</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <button type="button" class="gallery-open" aria-label="Enlarge photo: Meal prep shift">
+              <img src="https://mcusercontent.com/396ad65cb226626a0d13809ad/images/474d5f96-c0c0-99ec-1978-273f16665c99.jpg" alt="A CKNU meal prep shift" loading="lazy">
+            </button>
+            <figcaption>Meal prep</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <button type="button" class="gallery-open" aria-label="Enlarge photo: Delivery shift">
+              <img src="https://mcusercontent.com/396ad65cb226626a0d13809ad/images/96a860d2-5ab7-9fb0-66eb-e1692c78bf9b.jpg" alt="A CKNU delivery shift" loading="lazy">
+            </button>
+            <figcaption>Delivery</figcaption>
+          </figure>
+        </div>
+        <p class="gallery-more">More on Instagram: <a href="https://www.instagram.com/NUCampusKitchen" rel="noopener">@NUCampusKitchen</a></p>
+      </div>
+    </section>
+
+    <dialog id="lightbox" class="lightbox" aria-label="Photo">
+      <button type="button" class="lightbox-close" aria-label="Close photo">✕</button>
+      <img id="lightbox-img" src="" alt="">
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </dialog>
 
     <section id="get-involved" class="section">
       <div class="container">
