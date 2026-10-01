@@ -29,8 +29,8 @@ const HISTORY = {
   pounds: 10490,
   // 1,946 counted (fall 2025 and winter 2026), plus about 5,068 estimated for the quarters
   // that weren't counted, at the counted quarters' rate: 1,946 meals from 2,813 lbs of
-  // food, about 0.69 meals per pound.
-  meals: 7014,
+  // food, about 0.69 meals per pound. Plus about 243 for the 351 lbs added by hand.
+  meals: 7257,
   biggestYear: 3942, // 2025-26, for scaling the bars
 };
 const IMPACT_URL = "https://otsgpdlhjulixxqejkzk.supabase.co/rest/v1/rpc/public_impact";
@@ -71,7 +71,7 @@ async function addLiveImpact() {
       }
       thisYear.hidden = false;
       document.getElementById("impact-note").textContent =
-        "From our recovery logs since fall 2023, and live from our kitchen tracker this year. Meals before fall 2025, when we started counting them, are estimated from the pounds of food we rescued.";
+        "From our recovery logs since fall 2023 (plus 351 lbs from other records not shown by year), and live from our kitchen tracker this year. Meals before fall 2025, when we started counting them, are estimated from the pounds of food we rescued.";
     }
   } catch {
     // Offline or the tracker is down: the history in index.html stays as it is.
