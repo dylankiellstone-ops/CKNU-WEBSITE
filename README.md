@@ -2,14 +2,33 @@
 
 The public website for CKNU. It's a single page with these sections: who we are, how it works, get involved (volunteer, shift leads, exec board), support us, and contact. There's also a **Team login** button that links to the CKNU food tracker shift leads use.
 
-- **Live site:** https://dylankiellstone-ops.github.io/CKNU-WEBSITE/ (once GitHub Pages is turned on, see below)
+- **Live site:** https://cknu.org (also www.cknu.org), once GitHub Pages and the DNS are set up (see below)
 - **Hosting:** GitHub Pages. It's free, with no deploy limits, and updates about a minute after each change to `main`.
 
 ## Turning on GitHub Pages (one time)
 
 1. In this repo, go to **Settings → Pages**.
 2. Under **Build and deployment**, set **Source** to **Deploy from a branch**, choose branch **main** and folder **/ (root)**, then tap **Save**.
-3. After a minute or two, the site is live at the address above. The Pages settings page shows the link once it's ready.
+3. After a minute or two, the site is live. The Pages settings page shows the link once it's ready.
+
+## The cknu.org domain
+
+The domain is registered with **Squarespace** (Domains → cknu.org → DNS). The `CNAME` file in this repo tells GitHub Pages to serve the site at `cknu.org`; don't delete it.
+
+**DNS records in Squarespace (custom records):**
+
+| Type | Host | Data |
+|---|---|---|
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `dylankiellstone-ops.github.io` |
+| TXT | `_github-pages-challenge-dylankiellstone-ops` | The verification code from GitHub → Settings → Pages → Verified domains |
+
+The Squarespace Defaults preset (the A records pointing at Squarespace) must be removed, or cknu.org keeps showing Squarespace.
+
+After the DNS is set, go to **Settings → Pages**: **Custom domain** should show `cknu.org` with a green tick. Then turn on **Enforce HTTPS** (it can take up to an hour or so to become available).
 
 ## Editing the site
 
