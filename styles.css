@@ -105,7 +105,8 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--periwinkle); ou
   border-bottom: 1px solid var(--line);
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+.brand-name { white-space: nowrap; }
 .brand img { width: 44px; height: 44px; }
 .brand-name {
   font-family: var(--heading-font);
@@ -117,7 +118,8 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--periwinkle); ou
 }
 .brand-name small { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em; color: var(--muted); }
 
-.site-nav { display: flex; align-items: center; gap: 22px; }
+.site-nav { display: flex; align-items: center; gap: 18px; }
+.site-nav a { white-space: nowrap; }
 .site-nav a:not(.button) {
   font-family: var(--heading-font);
   text-transform: uppercase;
@@ -368,7 +370,8 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--periwinkle); ou
 }
 
 /* Phones and small tablets */
-@media (max-width: 860px) {
+/* The full menu needs about 1,020px; below that it becomes the Menu button. */
+@media (max-width: 1060px) {
   .nav-toggle { display: inline-block; }
   .site-nav {
     display: none;
@@ -386,7 +389,9 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--periwinkle); ou
   .site-nav.open { display: flex; }
   .site-nav a:not(.button) { padding: 12px 0; border-bottom: 1px solid var(--line); }
   .site-nav .button { margin-top: 12px; text-align: center; }
+}
 
+@media (max-width: 860px) {
   .hero { padding: 36px 0 24px; }
   .hero-inner { grid-template-columns: 1fr; gap: 24px; }
   .hero-art { order: -1; }
