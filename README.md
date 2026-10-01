@@ -42,6 +42,7 @@ assets/        logos, favicon and phone home-screen icon
 assets/gallery/  photos for the Photos section
 ```
 
+- **After changing `styles.css` or `script.js`:** bump the `?v=` number on their two lines in `index.html` (any new number, such as today's date and time). Otherwise phones can keep using the old file for a while and the page can look broken.
 - **Changing words:** edit `index.html` on GitHub (open the file, tap the ✏️ pencil, then **Commit changes**). The site updates in about a minute.
 - **Contact details** appear in three places in `index.html`: the Get involved links, the Say hi section, and the footer.
 - **Our impact numbers:** the history is written into the `#impact` section of `index.html` and the `HISTORY` numbers at the top of the impact code in `script.js`. They come from CKNU's recovery spreadsheets in the campuskitchen@ Google Drive (CKNU Recovery Tracker 2023-2024, 2024-2025 and 2025-2026), fall 2023 to spring 2026:
