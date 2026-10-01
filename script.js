@@ -24,15 +24,16 @@ document.getElementById("year").textContent = new Date().getFullYear();
 // the tracker's database keeps everything else private. If the live numbers can't be
 // loaded, the page just shows the history already written in index.html.
 const HISTORY = {
-  // 10,139 lbs logged in the recovery spreadsheets (fall 2023 to spring 2026), plus
-  // 351 lbs added by hand that weren't in them: 3 x (17 + 15 + 10 + 12 + 12 + 14 + 7 + 30).
-  pounds: 10490,
+  pounds: 10139, // logged in the recovery spreadsheets, fall 2023 to spring 2026
   // 1,946 counted (fall 2025 and winter 2026), plus about 5,068 estimated for the quarters
   // that weren't counted, at the counted quarters' rate: 1,946 meals from 2,813 lbs of
-  // food, about 0.69 meals per pound. Plus about 243 for the 351 lbs added by hand.
-  meals: 7257,
+  // food, about 0.69 meals per pound. Meals from fall 2026 on come from the tracker.
+  meals: 7014,
   biggestYear: 3942, // 2025-26, for scaling the bars
 };
+// 2026-27 food recovered but not logged in the tracker, added by hand:
+// 3 x (17 + 15 + 10 + 12 + 12 + 14 + 7 + 30) = 351 lbs, the first week of fall 2026.
+const THIS_YEAR_EXTRA_POUNDS = 351;
 const IMPACT_URL = "https://otsgpdlhjulixxqejkzk.supabase.co/rest/v1/rpc/public_impact";
 // The tracker's publishable key. It's designed to be public.
 const IMPACT_KEY = "sb_publishable_kUaii2SF5CKZDlovSbuNng_-UVfHbQS";
@@ -51,27 +52,22 @@ async function addLiveImpact() {
     });
     if (!response.ok) return;
     const live = await response.json();
-    const pounds = Number(live.pounds_rescued) || 0;
+    const pounds = (Number(live.pounds_rescued) || 0) + THIS_YEAR_EXTRA_POUNDS;
     const meals = Number(live.meals_made) || 0;
     document.getElementById("impact-pounds").textContent = formatCount(HISTORY.pounds + pounds);
     document.getElementById("impact-meals").textContent = formatCount(HISTORY.meals + meals);
 
-    // This school year's bar, from the tracker.
-    if (pounds > 0) {
-      const thisYear = document.getElementById("impact-this-year");
-      const biggest = Math.max(HISTORY.biggestYear, pounds);
-      thisYear.querySelector(".year-value").textContent = formatCount(pounds);
-      thisYear.querySelector(".year-bar span").style.setProperty("--share", `${(pounds / biggest) * 100}%`);
-      // If this year overtakes the record, rescale the earlier bars to match.
-      if (pounds > HISTORY.biggestYear) {
-        for (const bar of document.querySelectorAll("#impact-years li:not(#impact-this-year)")) {
-          const value = Number(bar.querySelector(".year-value").textContent.replace(/,/g, ""));
-          bar.querySelector(".year-bar span").style.setProperty("--share", `${(value / biggest) * 100}%`);
-        }
+    // This school year's bar: the tracker's pounds plus the food added by hand.
+    const thisYear = document.getElementById("impact-this-year");
+    const biggest = Math.max(HISTORY.biggestYear, pounds);
+    thisYear.querySelector(".year-value").textContent = formatCount(pounds);
+    thisYear.querySelector(".year-bar span").style.setProperty("--share", `${(pounds / biggest) * 100}%`);
+    // If this year overtakes the record, rescale the earlier bars to match.
+    if (pounds > HISTORY.biggestYear) {
+      for (const bar of document.querySelectorAll("#impact-years li:not(#impact-this-year)")) {
+        const value = Number(bar.querySelector(".year-value").textContent.replace(/,/g, ""));
+        bar.querySelector(".year-bar span").style.setProperty("--share", `${(value / biggest) * 100}%`);
       }
-      thisYear.hidden = false;
-      document.getElementById("impact-note").textContent =
-        "From our recovery logs since fall 2023 (plus 351 lbs from other records not shown by year), and live from our kitchen tracker this year. Meals before fall 2025, when we started counting them, are estimated from the pounds of food we rescued.";
     }
   } catch {
     // Offline or the tracker is down: the history in index.html stays as it is.
