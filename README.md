@@ -60,7 +60,7 @@ The site follows these, so keep them when editing:
   | `--purple` | `#3A1A5B` | Main brand colour: headings, buttons, logo |
   | `--sage` | `#8DB9A5` | "Recover" step |
   | `--periwinkle` | `#8186D9` | Volunteer card, focus outlines |
-  | `--rose` | `#CB7C80` | "Share" step |
+  | `--rose` | `#CB7C80` | "Deliver" step |
   | `--gold` | `#E8C687` | "Prep" step |
   | `--teal` | `#214D5B` | Labels, button hover |
   | `--slate` | `#67828E` | Available |
