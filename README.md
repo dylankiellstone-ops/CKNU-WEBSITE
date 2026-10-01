@@ -61,7 +61,7 @@ The site follows these, so keep them when editing:
   | `--sage` | `#8DB9A5` | "Recover" step |
   | `--periwinkle` | `#8186D9` | Volunteer card, focus outlines |
   | `--rose` | `#CB7C80` | "Share" step |
-  | `--gold` | `#E8C687` | "Cook" step |
+  | `--gold` | `#E8C687` | "Prep" step |
   | `--teal` | `#214D5B` | Labels, button hover |
   | `--slate` | `#67828E` | Available |
   | `--green` | `#86AC7B` | Shift lead card |
