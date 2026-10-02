@@ -1,6 +1,6 @@
 # The Campus Kitchen at Northwestern University: website
 
-The public website for CKNU. It's a single page with these sections: who we are, how it works, our impact, shifts (photos of each kind of shift), get involved (volunteer, shift leads, exec board), support us, and contact. There's also a **Team login** button that links to the CKNU food tracker shift leads use.
+The public website for CKNU. It's a single page with these sections: our impact (live numbers), how it works (recover, prep, deliver), get involved (volunteer, shift lead, partner with us), and contact. There's also a **Team login** button that links to the CKNU food tracker shift leads use.
 
 - **Live site:** https://cknu.org (also www.cknu.org), once GitHub Pages and the DNS are set up (see below)
 - **Hosting:** GitHub Pages. It's free, with no deploy limits, and updates about a minute after each change to `main`.
@@ -37,14 +37,13 @@ Everything is plain HTML and CSS, with no build step:
 ```
 index.html     all the page text and sections
 styles.css     colours, fonts and layout
-script.js      the phone menu, the photo pop-up and the copyright year
+script.js      the phone menu, the live impact numbers and the copyright year
 assets/        logos, favicon and phone home-screen icon
-assets/gallery/  photos for the Shifts section
 ```
 
 - **After changing `styles.css` or `script.js`:** bump the `?v=` number on their two lines in `index.html` (any new number, such as today's date and time). Otherwise phones can keep using the old file for a while and the page can look broken.
 - **Changing words:** edit `index.html` on GitHub (open the file, tap the ✏️ pencil, then **Commit changes**). The site updates in about a minute.
-- **Contact details** appear in three places in `index.html`: the Get involved links, the Say hi section, and the footer.
+- **Contact details** appear in two places in `index.html`: the Get involved links and the Say hi section.
 - **Our impact numbers:** the history is written into the `#impact` section of `index.html` and the `HISTORY` numbers at the top of the impact code in `script.js`. They come from CKNU's recovery spreadsheets in the campuskitchen@ Google Drive (CKNU Recovery Tracker 2023-2024, 2024-2025 and 2025-2026), fall 2023 to spring 2026:
   - **Pounds rescued:** every logged item's weight added up: 3,397 lbs (2023–24), 2,799 lbs (2024–25), 3,942 lbs (2025–26), 10,139 lbs. Plus 351 lbs from the first week of fall 2026 that wasn't logged in the tracker (3 × (17 + 15 + 10 + 12 + 12 + 14 + 7 + 30)), added by hand as `THIS_YEAR_EXTRA_POUNDS` in `script.js`; it shows in the 2026–27 bar along with the tracker's live pounds. 10,490 lbs in all.
   - **Meals prepped:** 7,014, of which 1,946 were counted and 5,068 are estimated. Meals from fall 2026 on are counted in the tracker and added live.
@@ -56,8 +55,7 @@ assets/gallery/  photos for the Shifts section
   - **Exact numbers:** the cards show exact totals (10,490 lbs and 7,014 meals, plus whatever the tracker adds). The yearly bars are exact pounds too. The opening paragraph at the top of the page says "over 10,000 pounds of food and over 7,000 meals"; update it by hand as the totals grow.
   - **At the end of each school year,** add that year's tracker total to `HISTORY` and as a new bar in `index.html`, or leave it live; just don't do both, or it counts twice.
 - **Team login link:** if the food tracker moves (for example to GitHub Pages), search `index.html` for `bucolic-brigadeiros-cb611c.netlify.app` and replace both copies.
-- **Adding a photo to the Shifts section:** upload it to `assets/gallery/` (on GitHub: open the folder, then **Add file → Upload files**). Then in `index.html`, find the `<div class="gallery">` block, copy one whole `<figure>…</figure>`, and change the `src` to `assets/gallery/your-photo.jpg`, the `alt` to what's in the photo, and the caption. Keep photos under about 500 KB so the site stays fast on phones. Tapping a photo opens it bigger; that works automatically for new ones.
-- **Current photos in the Shifts section** are stock photos (not labelled on the page). Don't describe them as CKNU's own in captions or text. They're linked from the CKNU Mailchimp image library. If those ever stop showing, upload copies to `assets/gallery/` and point the `src` there.
+- **Photos:** there are none for now. The stock photos were taken down until CKNU has good photos of its own. The old photo section and its tap-to-enlarge pop-up are in the git history (commit `b902cb0`) if you want to bring them back with real photos; keep each photo under about 500 KB.
 
 ## Brand rules (from the CKNU Brand Guidelines)
 

@@ -74,23 +74,3 @@ async function addLiveImpact() {
   }
 }
 addLiveImpact();
-
-// Photo gallery: tap a photo to see it bigger.
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const lightboxCaption = document.getElementById("lightbox-caption");
-
-document.querySelectorAll(".gallery-open").forEach((button) => {
-  button.addEventListener("click", () => {
-    const img = button.querySelector("img");
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-    lightboxCaption.textContent = button.closest("figure").querySelector("figcaption")?.textContent || "";
-    lightbox.showModal();
-  });
-});
-lightbox.querySelector(".lightbox-close").addEventListener("click", () => lightbox.close());
-// Clicking the dark area around the photo closes it too.
-lightbox.addEventListener("click", (event) => {
-  if (event.target === lightbox) lightbox.close();
-});
