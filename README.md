@@ -55,7 +55,7 @@ assets/        logos, favicon and phone home-screen icon
   - **Exact numbers:** the cards show exact totals (10,490 lbs and 7,014 meals, plus whatever the tracker adds). The yearly bars are exact pounds too. The opening paragraph at the top of the page says "over 10,000 pounds of food and over 7,000 meals"; update it by hand as the totals grow.
   - **At the end of each school year,** add that year's tracker total to `HISTORY` and as a new bar in `index.html`, or leave it live; just don't do both, or it counts twice.
 - **Team login link:** if the food tracker moves (for example to GitHub Pages), search `index.html` for `bucolic-brigadeiros-cb611c.netlify.app` and replace both copies.
-- **Photos:** there are none for now. The stock photos were taken down until CKNU has good photos of its own. The old photo section and its tap-to-enlarge pop-up are in the git history (commit `b902cb0`) if you want to bring them back with real photos; keep each photo under about 500 KB.
+- **Photos:** none on the page for now. The stock photos were taken down until CKNU has good photos of its own. Real photos waiting to go up are saved in `assets/photos/` (not shown anywhere yet): `delivery.jpg`, a delivery to a community fridge. The plan is to add a photo section once there are three (one each for recover, prep and deliver). The old photo section and its tap-to-enlarge pop-up are in the git history (commit `b902cb0`); keep each photo under about 500 KB.
 
 ## Brand rules (from the CKNU Brand Guidelines)
 
